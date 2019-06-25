@@ -23,3 +23,6 @@ Ces données pourront être utilisées dans l'implementation de plate-forme.
 | type de plate-forme | id, libellé, description | contiendra les informations relatifs à la catégorie de données qu'on peut retrouver sur une plate-forme (agricole, santé, etc) |
 
 Le type de plate-forme servira aussi de donnés d'informations pour la section [plateformes]
+
+![alt text](http://url/to/img.png)
+
