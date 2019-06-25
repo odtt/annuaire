@@ -1,7 +1,7 @@
- ###Description des classes
+### Description des classes
  
-###Les données d'informations
-Ces données seront celles utilisées pour le templates.
+### Les données d'informations
+Ces classes décrivent la structure de la base de données de l'annuaire.
 
 | Classe | Champs | Description |
 | -------- | ----------- | --------------- |
@@ -12,7 +12,7 @@ Ces données seront celles utilisées pour le templates.
 | Partenaires | id, logo ,nom | contiendras les informations qui remplirons la sections [partenaires] |
 | New letters |id, email | contiendras la listes des addresses email aux quels doivent être envoyer des newletters |
 
-###Les sonnées utilisé dans le cadre de l'implémentation
+### Les données utilisée dans le cadre de l'implémentation
 Ces données pourront être utilisées dans l'implementation de plate-forme.
 
 | Classe | Champs | Description |
