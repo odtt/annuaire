@@ -1,7 +1,6 @@
- ###Description des classes
- 
-###Les données d'informations
-Ces données seront celles utilisées pour le templates.
+###Description des classes 
+
+Description des classes qui seront utilisées pour l'implémentation de la plateforme
 
 | Classe | Champs | Description |
 | -------- | ----------- | --------------- |
@@ -11,15 +10,6 @@ Ces données seront celles utilisées pour le templates.
 | Equipe | nom, prenom , image, liens (facebook, twitter ...) | permettra de données les informations sur [les menbres de l'équipe] |
 | Partenaires | id, logo ,nom | contiendras les informations qui remplirons la sections [partenaires] |
 | New letters |id, email | contiendras la listes des addresses email aux quels doivent être envoyer des newletters |
-
-###Les sonnées utilisé dans le cadre de l'implémentation
-Ces données pourront être utilisées dans l'implementation de plate-forme.
-
-| Classe | Champs | Description |
-| -------- | ----------- | --------------- |
 | Plateforme | id , nom, logo, descriptions, url | contiendra les informations relatifs aux autres plate-forme de données libres |
-| Jeu de données | id, nom, description, url, date_ de _publication | contiendra des informations relatifs au jeu de données publiées par chaques plateforme |
-| format des données | id, nom | contiendra le type de format au quel le jeu de données est disponnible |
-| type de plate-forme | id, libellé, description | contiendra les informations relatifs à la catégorie de données qu'on peut retrouver sur une plate-forme (agricole, santé, etc) |
-
-Le type de plate-forme servira aussi de donnés d'informations pour la section [plateformes]
+| utilisateur | id, nom_utilisateur, email, mot_de_passe | contiendra les informations relatifs aux utilisateurs de la plateforme |
+| groupe | id, libellé | contiendra les différents groupes d'utilisateur qu'on obeservera sur la plateforme et permettra de determiner les fonctionnalitées aux quels ils ont accées |
