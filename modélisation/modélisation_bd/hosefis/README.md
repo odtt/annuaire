@@ -10,7 +10,7 @@ Ces classes décrivent la structure de la base de données de l'annuaire.
 | faq | id, question, reponse | permettra de remplir la sesction [faq] |
 | Equipe | nom, prenom , image, liens (facebook, twitter ...) | permettra de données les informations sur [les menbres de l'équipe] |
 | Partenaires | id, logo ,nom | contiendras les informations qui remplirons la sections [partenaires] |
-| New letters |id, email | contiendras la listes des addresses email aux quels doivent être envoyer des newletters |
+| Newsletters |id, email | contiendras la listes des addresses email aux quels doivent être envoyer des newletters |
 
 ### Les données utilisée dans le cadre de l'implémentation
 Ces données pourront être utilisées dans l'implementation de plate-forme.
