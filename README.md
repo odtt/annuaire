@@ -1,5 +1,6 @@
 # Annuaire des plateformes OpenData du Togo
-Ce repository contiendra les propositions de tout le monde.
+Ce repository contiendra les propositions de tout le monde.  
+Petit tutoriel sur markdown : [lien du tutoriel](https://github.com/luong-komorebi/Markdown-Tutorial/blob/master/README_fr.md)
 ## Les propositions seront organisées comme suit:
 - Pour poster une poposition, il faut faire le clone du projet et y ajouter sa proposition.
 - Chaque proposition doit se trouver dans un dossier portant le nom ou ID de la personne qui fait la proposition
