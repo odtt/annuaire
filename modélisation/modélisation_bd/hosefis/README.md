@@ -24,5 +24,5 @@ Ces données pourront être utilisées dans l'implementation de plate-forme.
 
 Le type de plate-forme servira aussi de donnés d'informations pour la section [plateformes]
 
-![alt text](http://url/to/img.png)
+![Modélisation](https://github.com/odtt/annuaire/blob/master/mod%C3%A9lisation/mod%C3%A9lisation_bd/hosefis/Database%20Modelisation%20diagram.jpg?raw=true)
 
