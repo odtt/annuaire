@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -28,16 +30,27 @@ class User implements UserInterface
      */
     private $email;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Plateforme", mappedBy="user")
+     */
+    private $plateformes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
+     */
+    private $role;
+
+    public function __construct()
+    {
+        $this->plateformes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,24 +79,6 @@ class User implements UserInterface
         return (string) $this->username;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
 
     /**
      * @see UserInterface
@@ -126,5 +121,48 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Plateforme[]
+     */
+    public function getPlateformes(): Collection
+    {
+        return $this->plateformes;
+    }
+
+    public function addPlateforme(Plateforme $plateforme): self
+    {
+        if (!$this->plateformes->contains($plateforme)) {
+            $this->plateformes[] = $plateforme;
+            $plateforme->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlateforme(Plateforme $plateforme): self
+    {
+        if ($this->plateformes->contains($plateforme)) {
+            $this->plateformes->removeElement($plateforme);
+            // set the owning side to null (unless already changed)
+            if ($plateforme->getUser() === $this) {
+                $plateforme->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
+
+        return $this;
     }
 }
