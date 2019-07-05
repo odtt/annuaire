@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RoleController extends AbstractController
 {
+    private $roleRepository;
+
+    public function __construct(RoleRepository $roleRepository)
+    {
+        $this->roleRepository = $roleRepository;
+    }
+
     /**
      * @Route("/", name="role_index", methods={"GET"})
      */
-    public function index(RoleRepository $roleRepository): Response
+    public function index(): Response
     {
         return $this->render('role/index.html.twig', [
-            'roles' => $roleRepository->findAll(),
+            'roles' => $this->roleRepository->findAll(),
         ]);
     }
 

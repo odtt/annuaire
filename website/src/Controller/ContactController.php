@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ContactController extends AbstractController
 {
+    private $contactRepository;
+
+    public function __construct(ContactRepository $contactRepository)
+    {
+        $this->$contactRepository = $contactRepository;
+    }
+
     /**
      * @Route("/", name="contact_index", methods={"GET"})
      */
-    public function index(ContactRepository $contactRepository): Response
+    public function index(): Response
     {
         return $this->render('contact/index.html.twig', [
-            'contacts' => $contactRepository->findAll(),
+            'contacts' => $this->contactRepository->findAll(),
         ]);
     }
 

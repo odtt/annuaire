@@ -125,7 +125,6 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-<<<<<<< HEAD
      * String representation of object
      * @link https://php.net/manual/en/serializable.serialize.php
      * @return string the string representation of the object or null
@@ -148,47 +147,6 @@ class User implements UserInterface, \Serializable
     public function unserialize($serialized)
     {
         [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
-=======
-     * @return Collection|Plateforme[]
-     */
-    public function getPlateformes(): Collection
-    {
-        return $this->plateformes;
-    }
-
-    public function addPlateforme(Plateforme $plateforme): self
-    {
-        if (!$this->plateformes->contains($plateforme)) {
-            $this->plateformes[] = $plateforme;
-            $plateforme->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlateforme(Plateforme $plateforme): self
-    {
-        if ($this->plateformes->contains($plateforme)) {
-            $this->plateformes->removeElement($plateforme);
-            // set the owning side to null (unless already changed)
-            if ($plateforme->getUser() === $this) {
-                $plateforme->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
-
-        return $this;
     }
 
     /**
@@ -207,7 +165,9 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        //Implement getRoles() method.
->>>>>>> 0af26936e490602f9d31addc1bb0d01d74a27f2c
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 }

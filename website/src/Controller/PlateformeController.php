@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PlateformeController extends AbstractController
 {
+    private $plateformeRepository;
+
+    public function __construct(PlateformeRepository $plateformeRepository)
+    {
+        $this->plateformeRepository = $plateformeRepository;
+    }
+
     /**
      * @Route("/", name="plateforme_index", methods={"GET"})
      */
-    public function index(PlateformeRepository $plateformeRepository): Response
+    public function index(): Response
     {
         return $this->render('plateforme/index.html.twig', [
-            'plateformes' => $plateformeRepository->findAll(),
+            'plateformes' => $this->plateformeRepository->findAll(),
         ]);
     }
 

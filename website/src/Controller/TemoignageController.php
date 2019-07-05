@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TemoignageController extends AbstractController
 {
+    private $temoignageRepository;
+
+    public function __construct(TemoignageRepository $temoignageRepository)
+    {
+        $this->$temoignageRepository = $temoignageRepository;
+    }
+
     /**
      * @Route("/", name="temoignage_index", methods={"GET"})
      */
-    public function index(TemoignageRepository $temoignageRepository): Response
+    public function index(): Response
     {
         return $this->render('temoignage/index.html.twig', [
-            'temoignages' => $temoignageRepository->findAll(),
+            'temoignages' => $this->temoignageRepository->findAll(),
         ]);
     }
 

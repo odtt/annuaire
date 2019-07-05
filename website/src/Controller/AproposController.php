@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AproposController extends AbstractController
 {
+    private $aproposRepository;
+
+    public function __construct(AproposRepository $aproposRepository)
+    {
+        $this->aproposRepository = $aproposRepository;
+    }
+
     /**
      * @Route("/", name="apropos_index", methods={"GET"})
      */
-    public function index(AproposRepository $aproposRepository): Response
+    public function index(): Response
     {
         return $this->render('apropos/index.html.twig', [
-            'apropos' => $aproposRepository->findAll(),
+            'apropos' => $this->aproposRepository->findAll(),
         ]);
     }
 
