@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Plateforme;
 use App\Form\PlateformeType;
-//use App\Repository\PlateformeRepository;
+use App\Repository\PlateformeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,21 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PlateformeController extends AbstractController
 {
-//    private $plateformeRepository;
-//
-//    public function __construct(PlateformeRepository $plateformeRepository)
-//    {
-//        $this->plateformeRepository = $plateformeRepository;
-//    }
+    private $plateformeRepository;
+
+    public function __construct(PlateformeRepository $plateformeRepository)
+    {
+        $this->plateformeRepository = $plateformeRepository;
+    }
 
     /**
      * @Route("/", name="plateforme_index", methods={"GET"})
      */
     public function index(): Response
     {
-//        return $this->render('plateforme/index.html.twig', [
-//            'plateformes' => $this->plateformeRepository->findAll(),
-//        ]);
+        return $this->render('plateforme/index.html.twig', [
+            'plateformes' => $this->plateformeRepository->findAll(),
+        ]);
     }
 
     /**

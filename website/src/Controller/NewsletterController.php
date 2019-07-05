@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;
-//use App\Repository\NewsletterRepository;
+use App\Repository\NewsletterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,21 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NewsletterController extends AbstractController
 {
-//    private $newsletterRepository;
-//
-//    public function __construct(NewsletterRepository $newsletterRepository)
-//    {
-//        $this->$newsletterRepository = $newsletterRepository;
-//    }
+    private $newsletterRepository;
+
+    public function __construct(NewsletterRepository $newsletterRepository)
+    {
+        $this->$newsletterRepository = $newsletterRepository;
+    }
 
     /**
      * @Route("/", name="newsletter_index", methods={"GET"})
      */
     public function index(): Response
     {
-//        return $this->render('newsletter/index.html.twig', [
-//            'newsletters' => $this->newsletterRepository->findAll(),
-//        ]);
+        return $this->render('newsletter/index.html.twig', [
+            'newsletters' => $this->newsletterRepository->findAll(),
+        ]);
     }
 
     /**
