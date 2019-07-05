@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Partenaire;
 use App\Form\PartenaireType;
-use App\Repository\PartenaireRepository;
+//use App\Repository\PartenaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,14 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PartenaireController extends AbstractController
 {
+//    private $partenaireRepository;
+//
+//    public function __construct(PartenaireRepository $partenaireRepository)
+//    {
+//        $this->partenaireRepository = $partenaireRepository;
+//    }
+
     /**
      * @Route("/", name="partenaire_index", methods={"GET"})
      */
-    public function index(PartenaireRepository $partenaireRepository): Response
+    public function index(): Response
     {
-        return $this->render('partenaire/index.html.twig', [
-            'partenaires' => $partenaireRepository->findAll(),
-        ]);
+//        return $this->render('partenaire/index.html.twig', [
+//            'partenaires' => $this->partenaireRepository->findAll(),
+//        ]);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Temoignage;
 use App\Form\TemoignageType;
-use App\Repository\TemoignageRepository;
+//use App\Repository\TemoignageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,14 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TemoignageController extends AbstractController
 {
+//    private $temoignageRepository;
+//
+//    public function __construct(TemoignageRepository $temoignageRepository)
+//    {
+//        $this->$temoignageRepository = $temoignageRepository;
+//    }
+
     /**
      * @Route("/", name="temoignage_index", methods={"GET"})
      */
-    public function index(TemoignageRepository $temoignageRepository): Response
+    public function index(): Response
     {
-        return $this->render('temoignage/index.html.twig', [
-            'temoignages' => $temoignageRepository->findAll(),
-        ]);
+//        return $this->render('temoignage/index.html.twig', [
+//            'temoignages' => $this->temoignageRepository->findAll(),
+//        ]);
     }
 
     /**

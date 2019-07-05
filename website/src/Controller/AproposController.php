@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Apropos;
 use App\Form\AproposType;
-use App\Repository\AproposRepository;
+//use App\Repository\AproposRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,14 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class AproposController extends AbstractController
 {
+//    private $aproposRepository;
+//
+//    public function __construct(AproposRepository $aproposRepository)
+//    {
+//        $this->aproposRepository = $aproposRepository;
+//    }
+
     /**
      * @Route("/", name="apropos_index", methods={"GET"})
      */
-    public function index(AproposRepository $aproposRepository): Response
+    public function index(): Response
     {
-        return $this->render('apropos/index.html.twig', [
-            'apropos' => $aproposRepository->findAll(),
-        ]);
+//        return $this->render('apropos/index.html.twig', [
+//            'apropos' => $this->aproposRepository->findAll(),
+//        ]);
     }
 
     /**

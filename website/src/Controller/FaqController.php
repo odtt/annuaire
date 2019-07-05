@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Faq;
 use App\Form\FaqType;
-use App\Repository\FaqRepository;
+//use App\Repository\FaqRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,14 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FaqController extends AbstractController
 {
+//    private $faqRepository;
+//
+//    public function __construct(FaqRepository $faqRepository)
+//    {
+//        $this->$faqRepository = $faqRepository;
+//    }
+
     /**
      * @Route("/", name="faq_index", methods={"GET"})
      */
-    public function index(FaqRepository $faqRepository): Response
+    public function index(): Response
     {
-        return $this->render('faq/index.html.twig', [
-            'faqs' => $faqRepository->findAll(),
-        ]);
+//        return $this->render('faq/index.html.twig', [
+//            'faqs' => $this->faqRepository->findAll(),
+//        ]);
     }
 
     /**
