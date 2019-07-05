@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FaqController extends AbstractController
 {
+    private $faqRepository;
+
+    public function __construct(FaqRepository $faqRepository)
+    {
+        $this->$faqRepository = $faqRepository;
+    }
+
     /**
      * @Route("/", name="faq_index", methods={"GET"})
      */
-    public function index(FaqRepository $faqRepository): Response
+    public function index(): Response
     {
         return $this->render('faq/index.html.twig', [
-            'faqs' => $faqRepository->findAll(),
+            'faqs' => $this->faqRepository->findAll(),
         ]);
     }
 

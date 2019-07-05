@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PartenaireController extends AbstractController
 {
+    private $partenaireRepository;
+
+    public function __construct(PartenaireRepository $partenaireRepository)
+    {
+        $this->partenaireRepository = $partenaireRepository;
+    }
+
     /**
      * @Route("/", name="partenaire_index", methods={"GET"})
      */
-    public function index(PartenaireRepository $partenaireRepository): Response
+    public function index(): Response
     {
         return $this->render('partenaire/index.html.twig', [
-            'partenaires' => $partenaireRepository->findAll(),
+            'partenaires' => $this->partenaireRepository->findAll(),
         ]);
     }
 

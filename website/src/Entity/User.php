@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -112,6 +112,7 @@ class User implements UserInterface
     public function getSalt()
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
+        return null;
     }
 
     /**
@@ -124,46 +125,28 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Plateforme[]
+     * String representation of object
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string the string representation of the object or null
+     * @since 5.1.0
      */
-    public function getPlateformes(): Collection
+    public function serialize()
     {
-        return $this->plateformes;
+        return serialize([$this->id, $this->username, $this->password]);
     }
 
-    public function addPlateforme(Plateforme $plateforme): self
+    /**
+     * Constructs the object
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object.
+     * </p>
+     * @return void
+     * @since 5.1.0
+     */
+    public function unserialize($serialized)
     {
-        if (!$this->plateformes->contains($plateforme)) {
-            $this->plateformes[] = $plateforme;
-            $plateforme->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePlateforme(Plateforme $plateforme): self
-    {
-        if ($this->plateformes->contains($plateforme)) {
-            $this->plateformes->removeElement($plateforme);
-            // set the owning side to null (unless already changed)
-            if ($plateforme->getUser() === $this) {
-                $plateforme->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
-
-        return $this;
+        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
     /**
@@ -182,6 +165,9 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        //Implement getRoles() method.
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 }

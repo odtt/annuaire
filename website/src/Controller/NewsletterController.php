@@ -15,13 +15,20 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class NewsletterController extends AbstractController
 {
+    private $newsletterRepository;
+
+    public function __construct(NewsletterRepository $newsletterRepository)
+    {
+        $this->$newsletterRepository = $newsletterRepository;
+    }
+
     /**
      * @Route("/", name="newsletter_index", methods={"GET"})
      */
-    public function index(NewsletterRepository $newsletterRepository): Response
+    public function index(): Response
     {
         return $this->render('newsletter/index.html.twig', [
-            'newsletters' => $newsletterRepository->findAll(),
+            'newsletters' => $this->newsletterRepository->findAll(),
         ]);
     }
 
