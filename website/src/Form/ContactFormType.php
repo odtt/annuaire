@@ -17,6 +17,7 @@ class ContactFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('email', EmailType::class)
+            ->add('sujet')
             ->add('message', TextareaType::class)
             ->add('envoyer', SubmitType::class, ['label' => 'Envoyer'])
             ->getForm();

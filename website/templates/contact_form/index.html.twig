@@ -6,9 +6,10 @@
 
 
 <div class="example-wrapper">
-     {{ form_start(ContactForm) }}
+    {{ form_start(ContactForm) }}
     {{ form_row(ContactForm.nom, {'attr': {'placeholder': "Votre nom"}}) }}
     {{ form_row(ContactForm.email, {'attr': {'placeholder': "Votre email"}}) }}
+    {{ form_row(ContactForm.sujet, {'attr': {'placeholder': "Votre sujet"}}) }}
     {{ form_row(ContactForm.message, {'attr': {'placeholder': "Votre message"}}) }}
     {{ form_end(ContactForm) }}
 </div>
