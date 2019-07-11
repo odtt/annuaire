@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TemoignageRepository")
+ * @ORM\Table(name="temoignages")
  */
 class Temoignage
 {
@@ -17,6 +19,7 @@ class Temoignage
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
     private $nomDutilisateur;
@@ -32,7 +35,7 @@ class Temoignage
     private $profession;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $message;
 

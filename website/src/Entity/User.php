@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="utilisateurs")
+ * @UniqueEntity(fields={"username"})
  */
 class User implements UserInterface, \Serializable
 {
@@ -20,6 +23,7 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=40, unique=true)
      */
     private $username;
@@ -43,9 +47,11 @@ class User implements UserInterface, \Serializable
     private $plateformes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
+     * @var array
+     *
+     * @ORM\Column(type="json")
      */
-    private $role;
+    private $roles = [];
 
     public function __construct()
     {
@@ -147,6 +153,11 @@ class User implements UserInterface, \Serializable
     public function unserialize($serialized)
     {
         [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
     }
 
     /**
