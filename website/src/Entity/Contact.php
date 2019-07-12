@@ -20,11 +20,13 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $email;
 
@@ -35,8 +37,8 @@ class Contact
     private $sujet;
 
     /**
-     * @Assert\NotBlank()
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $message;
 
