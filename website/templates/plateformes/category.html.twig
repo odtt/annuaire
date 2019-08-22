@@ -1,7 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}{{ parent() }} Catégorie{% endblock %}
 
 {% block body %}
-    <h2>categorie</h2>
+    {{ parent() }}
+{% endblock %}
+
+{% block main %}
+    <div class="container" style="margin-top: 90px">
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, optio excepturi! Porro non commodi atque facilis provident, nobis dolores molestias et earum labore. Voluptatum ducimus consectetur aspernatur est inventore voluptates?</h3>
+    </div>
 {% endblock %}

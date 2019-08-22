@@ -4,17 +4,25 @@ namespace App\Controller;
 
 use App\Entity\Categorie;
 use App\Entity\Plateforme;
+use App\Repository\PlateformeRepository;
+use Pagerfanta\Pagerfanta;
 use App\Repository\CategorieRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     private $categoryRepo;
+    private $entityManager;
+    private $plateformRepo;
 
-    public function __construct(CategorieRepository $categorieRepository)
+    public function __construct(CategorieRepository $categorieRepository, EntityManagerInterface $entityManager, PlateformeRepository $plateformRepo)
     {
         $this->categoryRepo = $categorieRepository;
+        $this->entityManager = $categorieRepository;
+        $this->plateformRepo = $plateformRepo;
     }
 
     /**
@@ -36,6 +44,18 @@ class HomeController extends AbstractController
     }
 
     /**
+     * Fonction chargant toutes les plateformes
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function platformsList()
+    {
+        //Requete de pour recuperer les donnees depuis la BD
+        return $this->render('plateformes/list.html.twig', [
+            'plateforms' => $this->plateformRepo->findBy(['visible' => true], ['nom' => 'ASC'])
+        ]);
+    }
+
+    /**
      * @Route(path="/plateformes/{id}", name="show.platform")
      * Fonction chargant toutes les categories de plateformes
      * @return \Symfony\Component\HttpFoundation\Response
@@ -50,11 +70,20 @@ class HomeController extends AbstractController
     }
 
     /**
-     * Fonction chargant toutes les categories de plateformes
+     * Fonction chargeant toutes les categories de plateformes
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showCategories()
     {
+        // $queryBuilder = $this->entityManager->createQueryBuilder('c')
+        //     ->andWhere('c.visible = 1')
+        //     ->orderBy('c.nom', 'ASC');
+        // $adapter = new DoctrineORMAdapter($queryBuilder);        
+        // // $adapter = new DoctrineORMAdapter($this->categoryRepo->findBy(['visible' => true], ['nom' => 'ASC']));
+        // $pagerfanta = new Pagerfanta($adapter);
+        //     return $this->render('pagination.html.twig', [
+        //     'my_pager' => $pagerfanta,
+        // ]);
         //Requete de pour recuperer les donnees depuis la BD
 
         return $this->render('plateformes/categories.html.twig', [

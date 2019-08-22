@@ -1,0 +1,18 @@
+<div class="row">
+    {% for p in plateforms %}
+        <div class="col-md-6 col-lg-4 wow bounceInUp platforms" data-wow-duration="1.4s" data-platform="{{ {
+            id: p.id,
+            description: p.description,
+            category: p.categorie.nom,
+            url: p.url,
+            logo: p.urlLogo,
+        } | json_encode() }}">
+            <div class="box">
+                <div class="icon" style="background: #fceef3;"><i class="ion-ios-heart-outline" style="color: #ff689b;"></i></div>
+                <h4 class="title"><a href="#">{{ p.nom }}</a></h4>
+                {# <h4 class="title"><a href="{{ path('show.category', {id: c.id}) }}">{{ c.nom }}</a></h4> #}
+                <p class="description">{{ p.description[:80] ~ '...' }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>

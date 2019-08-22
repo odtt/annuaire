@@ -1,22 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} Accueil{% endblock %}
-
 {% block stylesheets %}
     <style>
-        #moreAbout{
-            font-family: "Montserrat", sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .pagerfanta {
+        }
+
+        .pagerfanta a,
+        .pagerfanta span {
             display: inline-block;
-            padding: 10px 32px;
-            border-radius: 4px;
-            transition: 0.5s;
-            color: #fff;
-            background: #1bb1dc;
-            color: #fff;           
+            border: 1px solid blue;
+            color: blue;
+            margin-right: .2em;
+            padding: .25em .35em;
+        }
+
+        .pagerfanta a {
+            text-decoration: none;
+        }
+
+        .pagerfanta a:hover {
+            background: #ccf;
+        }
+
+        .pagerfanta .dots {
+            border-width: 0;
+        }
+
+        .pagerfanta .current {
+            background: #ccf;
+            font-weight: bold;
+        }
+
+        .pagerfanta .disabled {
+            border-color: #ccf;
+            color: #ccf;
+        }
+
+        .pagerfanta a,
+        .pagerfanta span {
+            border-color: blue;
+            color: blue;
+        }
+
+        .pagerfanta a:hover {
+            background: #ccf;
+        }
+
+        .pagerfanta .current {
+            background: #ccf;
+        }
+
+        .pagerfanta .disabled {
+            border-color: #ccf;
+            color: #cf;
         }
     </style>
 {% endblock %}
@@ -25,9 +61,9 @@
     <!--==========================
     Header
     ============================-->
-    <header id="header">
+    <header id="header" class="header-scrolled">
 
-        <div id="topbar">
+        {# <div id="topbar">
             <div class="container">
                 <div class="social-links">
                     <a href="https://twitter.com/opendatatg" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -36,7 +72,7 @@
                     <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
+        </div> #}
 
         <div class="container">
 
@@ -58,110 +94,11 @@
 
         </div>
     </header><!-- #header -->
-
-    <!--==========================
-      Intro Section
-    ============================-->
-    <section id="intro" class="clearfix">
-        <div class="container d-flex h-100">
-            <div class="row justify-content-center align-self-center">
-                <div class="col-md-6 intro-info order-md-first order-last">
-                    <h2>Annuaire des Plateformes <span>OpenData </span>du Togo</h2>
-                    <div>
-                        <a href="#about" class="btn-get-started scrollto">Explorer</a>
-                    </div>
-                </div>
-
-                <div class="col-md-6 intro-img order-md-last order-first">
-                    <img src="img/intro-img.svg" alt="" class="img-fluid">
-                </div>
-            </div>
-
-        </div>
-    </section><!-- #intro -->
-
+    
+    
     <main id="main">
-
-        <!--==========================
-          A propos Section
-        ============================-->
-        <section id="about">
-
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-lg-5 col-md-6">
-                        <div class="about-img">
-                            <!--<img src="img/about-img.jpg" alt="">-->
-                            <img src="img/logo.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7 col-md-6">
-                        <div class="about-content">
-                            <h2>A propos de nous</h2>
-                            <h3>Odio sed id eos et laboriosam consequatur eos earum soluta.</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <ul>
-                                <li><i class="ion-android-checkmark-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                                <li><i class="ion-android-checkmark-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                            </ul>
-                            <a href="javascript:void(0)" class="btn btn-default" id="moreAbout">Plus de détails</a>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section><!-- #about -->
-
-
-        <!--==========================
-          Services Section
-        ============================-->
-        <section id="services" class="section-bg">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Plateformes</h3>
-                    <p>En dessous vous avez la liste des plateformes que la Open Data Team du Togo ont mis en place.</p>
-                </header>
-                {# Affichage de la liste des catégories de plateformes #}
-                {# Affichage de la liste des plateformes #}
-                {{ render(controller('App\\Controller\\HomeController::platformsList', {})) }}
-
-            </div>
-        </section><!-- #services -->
-
-        <!--==========================
-          Clients Section
-        ============================-->
-        <!---->
-        <!-- <section id="testimonials">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Les témoignages</h3>
-                </header>
-                {{ render(controller('App\\Controller\\HomeController::showTestimonials')) }}
-            </div>
-        </section>#testimonials -->
-
-        <!--==========================
-          Clients Section
-        ============================-->
-        <section id="clients" class="wow fadeInUp">
-            <div class="container">
-
-                <header class="section-header">
-                    <h3>Nos Partenaires</h3>
-                </header>
-                {{ render(controller('App\\Controller\\HomeController::showPartners')) }}
-
-            </div>
-        </section><!-- #clients -->
-
+        {% block main %}{% endblock %}
     </main>
-
     <!--==========================
       Footer
     ============================-->
