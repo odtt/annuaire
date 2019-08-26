@@ -1,0 +1,11 @@
+#easy_admin:
+#    site_name: 'Opendata.tg | Admin'
+#    entities:
+#        # List the entity class name you want to manage
+#        - App\Entity\Plateforme
+#        - App\Entity\Apropos
+#        - App\Entity\Contact
+#        - App\Entity\Partenaire
+#        - App\Entity\User
+imports:
+    - { resource: easy_admin/ }

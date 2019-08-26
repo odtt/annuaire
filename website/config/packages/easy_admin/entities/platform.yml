@@ -1,0 +1,41 @@
+# This file sets the configuration of the 'Product' entity.
+#
+# NOTE: this demo application splits the backend configuration into several
+# small files for educational purposes. In your application you can put the
+# entire backend configuration in just one file.
+#
+# The configuration options are explained in detail in the bundle documentation,
+# which is published at https://github.com/javiereguiluz/EasyAdminBundle
+easy_admin:
+    entities:
+        # the configuration of this entity is very verbose because it's used as
+        # an example to show all the configuration options available for entities
+        # check out the configuration of the other entities to see how concise
+        # can be the configuration of your backend
+        Platforme:
+            class: App\Entity\Plateforme
+            label: 'Plateformes'
+            list:
+                fields:
+                    - visible
+                    - nom
+                    - { property: 'urlLogo', type: 'image', base_path: '%app.path.product_images%' }
+                filters: ['visible', 'nom']
+            show:
+                fields:
+                    - { property: 'nom', css_class: 'large' }
+                    - description
+                    - { property: 'visible', label: 'Published' }
+                    - { property: 'urlLogo', type: 'image', base_path: '%app.path.product_images%' }
+                    - category
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
+                    - { property: 'nom', css_class: 'large' }
+                    - { property: 'description', type: 'fos_ckeditor' }
+                    - { type: 'divider' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Product Details', icon: 'cube' }
+                    - { type: 'section', label: 'Advanced Settings', icon: 'warning', help: 'Reserved for administrators use' }
+                    - { type: 'group', css_class: 'col-sm-4' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+#                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }

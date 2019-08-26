@@ -1,0 +1,54 @@
+# Check out the 'messages_en.yml' for an explanation about the best practices
+# recommended to translate your backend efficiently.
+
+# main menu
+menu.category:      Categorie
+menu.platform:      Plateforme
+menu.platforms:     Plateformes
+menu.platform.list: Liste des platformes
+menu.platform.add:  Ajout d'une platforme
+menu.users:         Utilisateurs
+menu.about:         A propos
+menu.about.home:    Site web officiel
+
+# entity names, labels and titles
+Categories: Categories
+Category:   Category
+About:      A propos
+Platform:   Plateforme
+Platforms:  Plateformes
+Partners:   Partenaires
+Contact:    Formulaire de contact
+User:       Utilisateurs
+
+# entity properties
+Created at: Date de création
+Description: Description
+Email: Email
+Enabled: Activé
+Features: Fonctionnalités
+Guid: GUID
+ID: ID
+Image file: Fichier image
+Image: Image
+Is active: Activé?
+Label: Titre
+Name: Nom
+Parent category: Catégorie mère
+Published: Publié
+Tags: Tags
+Total: Total
+Username: Nom d'utilisateur
+Password: Mot de passe
+
+# help messages
+
+# messages that contain variables
+'Plateforme %entity_label%': 'Plateforme %entity_label%'
+
+# misc. messages
+Platform Information: Information de la plateforme
+Advanced Settings: Options avancées
+Basic information: Information basique
+Legal Information: Information légale
+Platform Details: Détails de la plateforme

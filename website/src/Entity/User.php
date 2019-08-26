@@ -24,6 +24,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @Assert\NotBlank()
+     * @Assert\Length(min=4, max=250)
      * @ORM\Column(type="string", length=40, unique=true)
      */
     private $username;
@@ -31,6 +32,8 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -38,6 +41,8 @@ class User implements UserInterface, \Serializable
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Length(min=4, max=250)
      */
     private $password;
 
@@ -181,4 +186,27 @@ class User implements UserInterface, \Serializable
         $roles[] = 'ROLE_USER';
         return array_unique($roles);
     }
+
+    public function __toString()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlateformes()
+    {
+        return $this->plateformes;
+    }
+
+    /**
+     * @param mixed $plateformes
+     */
+    public function setPlateformes($plateformes): void
+    {
+        $this->plateformes = $plateformes;
+    }
+
+
 }

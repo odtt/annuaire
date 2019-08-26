@@ -4,7 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    backoffice_token: azwazw
+    backoffice_token: /admin-opendatatg-0720
+    app.path.product_images: /uploads/images/products
+    app.path.user_contracts: /uploads/files/user/contracts
 services:
     # default configuration for services in *this* file
     _defaults:
