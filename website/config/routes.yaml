@@ -1,6 +1,3 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-security_login:
-    path: /(%backoffice_token%)/login
-    controller: App\Controller\SecurityController::login

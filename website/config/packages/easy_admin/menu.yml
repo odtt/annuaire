@@ -9,6 +9,10 @@
 # The configuration options are explained in detail in the bundle documentation,
 # which is published at https://github.com/javiereguiluz/EasyAdminBundle
 easy_admin:
+    user:
+        display_name: true
+        display_avatar: false
+        name_property_path: gausoft    
     design:
         menu:
             - label: 'menu.platforms'
